@@ -1,13 +1,24 @@
-# [<challenge name>](https://www.codewars.com/kata/<challenge name>)
+# [Binary Addition](https://www.codewars.com/kata/binary-addition)
 
-Explain the challenge as completely & clearly as you can.
+We are to make a basic addition function that takes in numbers base 10, and returns their sum in base 2 as a string. There are no futher details about how we need to implmenent this.  
 
-_function name_: Function
-* Args: (how many args does this function take?)
-  * (List each arg, it's type, and it's purpose)
-* Return: (what type does this function return?)
-  * (Describe the return value)
-* Behavior: (What does this function do?)
+_binary\_addition_: Function
+* Args: 2
+  1. num\_1: Number
+  2. num\_2: Number
+* Return: String
+  * String of 1's & 0's
+* Behavior: 
+  * Takes in 2 numbers, adds them, returns a string representation of the sum in binary.
+
+Convert from base 10 to binary:
+* Find the largest power of 2 you can subtract from the number.  Put a 1 in that power's place, and subtract the power.
+* Find the next larges power of 2 you can subtract from the remainder. Put a 1 in that power's place, and subtract the power. (any powers you skipped become a 0 in your base 2 representation).
+* Do this until you reach 2^0.
+ 
+Binary Addition:
+* Just like base 10, but you jump to the next column when the sum is greater than 1.
+
 
 '''js
 // copy of your polished solution for easy reference.
@@ -29,11 +40,14 @@ _function name_: Function
 
 ## Input Classifications
 
-What characteristics of your inputs are important for your solution?  
+We will assume that our function will be passed numbers, so there's no need for handling types or conversions.  Since all we need to do is add two numbers, and the numbers are coming in as numbers, there aren't any relevant charecteristics besides their value.
 
-What groupings will you have to consider when building your solution?  
+While there are no theoretical differences between input classifications, because of how JS handles type conversions & addition there are some cases we need to keep in mind:
+* Starting with a 0 or not
+* Negative or not
+* Decimals vs whole numbers - ignore that for now
 
-How did you use this information to select your test cases?
+Knowing that I'll need to account for a few weirdnesses in JS type handling, I'll choose test cases that cover a variety of combinations pulling from the two categories above.
 
 
 [TOP](#index)
